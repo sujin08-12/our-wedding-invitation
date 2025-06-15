@@ -122,6 +122,8 @@
 
 	p.venue {
 		&.ko {
+
+			font-family: 'Noto Serif KR', serif;
 			font-weight: 700;
 			font-size: 1.1rem;
 		}

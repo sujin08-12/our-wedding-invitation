@@ -98,7 +98,7 @@
 
     button.show-account-btn {
         background-color: white;
-        font-family: 'Paperlogy-Regular';
+        font-family: 'Noto Serif KR', serif;
         border:2px solid #3C1E1E;
         color: #3C1E1E;
         padding: 0.8em 1.5em;
@@ -110,7 +110,8 @@
 
         &:hover {
             background-color: #EFEAE4;
-            font-family: 'Paperlogy-Bold';
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 900;
         }
     }
 
