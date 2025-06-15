@@ -26,7 +26,7 @@
 		<span class="address">108 Lamplighter, Irvine, CA 92620</span></button
 	>
 	<!-- <div id="naver-map" class="map"></div> -->
-	<p class="signature en">made with ♡ by Emily & Anthony</p>
+	<p class="signature en">made with ♡ by Sujin & Yungeun</p>
 	<a class="github-icon" href="https://github.com/anthopark/our-wedding-invitation" target="_blank"
 		><Github size="1.1em" strokeWidth={1} /></a
 	>

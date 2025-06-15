@@ -23,18 +23,18 @@
 		{#if localeStore.isEn}
 			<div class="letter-signature">
 				<p class="en">with love</p>
-				<p class="en">Emily & Anthony</p>
+				<p class="en">Yungeun & Sujin</p>
 			</div>
 		{:else}
 			<div class="family-description kr">
 				<p>
 					박주용<span class="name-divider">{@html nameDivider}</span> 김명숙
-					<span class="son">의 아들</span>박건희
+					<span class="son">의 아들</span>김윤근
 				</p>
 				<p>
 					피세광<span class="name-divider">{@html nameDivider}</span> 윤은주<span class="daughter"
 						>의 딸</span
-					>피아영
+					>정수진
 				</p>
 			</div>
 		{/if}
