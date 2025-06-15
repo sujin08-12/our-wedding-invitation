@@ -242,7 +242,7 @@ function Location($$payload, $$props) {
   var $$store_subs;
   $$payload.out += `<img${attr("src", locationTopWave)} class="location-top-wave svelte-1agmywo" alt=""> <section class="location svelte-1agmywo"><h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-1agmywo")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("location.title"))}</h2> <p class="venue en svelte-1agmywo">Woodbury Community Association</p> <button class="copy-address en svelte-1agmywo"><span class="clipboard-icon svelte-1agmywo">`;
   Clipboard($$payload, { size: "1.1em" });
-  $$payload.out += `<!----></span> <span class="address svelte-1agmywo">108 Lamplighter, Irvine, CA 92620</span></button> <div id="naver-map" class="map svelte-1agmywo"></div> <p class="signature en svelte-1agmywo">made with ♡ by Sujin &amp; Yungeun</p> <a class="github-icon svelte-1agmywo" href="https://github.com/anthopark/our-wedding-invitation" target="_blank">`;
+  $$payload.out += `<!----></span> <span class="address svelte-1agmywo">108 Lamplighter, Irvine, CA 92620</span></button> <div id="naver-map" class="map svelte-1agmywo"></div> <p class="signature en svelte-1agmywo">made with ♡ by Sujin &amp; Yungeun</p> <a class="github-icon svelte-1agmywo" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank">`;
   Github($$payload, { size: "1.1em", strokeWidth: 1 });
   $$payload.out += `<!----></a> <img class="location-deco svelte-1agmywo"${attr("src", locationDeco)} alt=""></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);

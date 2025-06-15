@@ -1,7 +1,7 @@
 <script lang="ts">
-	import locationTopWave from '$lib/assets/location-top-wave.svg';
+	const locationTopWave = "/location-top-wave.svg";
+	const locationDeco = "/location-deco.svg";
 
-	import locationDeco from '$lib/assets/location-deco.svg';
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
 	import { Clipboard, Github } from '@lucide/svelte';
@@ -10,7 +10,7 @@
 
 	function copyAddress() {
 		navigator.clipboard
-			.writeText('108 Lamplighter, Irvine, CA 92620')
+			.writeText('서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀')
 			.then(() => alert($_('location.address_copied')))
 			.catch(() => null);
 	}
@@ -23,7 +23,7 @@
 
 		script.onload = () => {
 			const mapOptions = {
-				center: new naver.maps.LatLng(37.486939, 127.033465),
+				center: new naver.maps.LatLng(37.486914707911, 127.03332909844),
 				zoom: 17,
 				minZoom: 8,
 				zoomControl: true,
@@ -35,7 +35,7 @@
 			const map = new naver.maps.Map('naver-map', mapOptions);
 
 			const marker = new naver.maps.Marker({
-				position: new naver.maps.LatLng(37.486939, 127.033465),
+				position: new naver.maps.LatLng(37.486914707911, 127.03332909844),
 				map: map
 			});
 		};
@@ -45,16 +45,16 @@
 <img src={locationTopWave} class="location-top-wave" alt="" />
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
-	<p class="venue en">Woodbury Community Association</p>
+	<p class="venue en">브라이드 밸리</p>
 	<button class="copy-address en" onclick={copyAddress}>
 		<span class="clipboard-icon">
 			<Clipboard size="1.1em" />
 		</span>
-		<span class="address">108 Lamplighter, Irvine, CA 92620</span></button
+		<span class="address">서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀</span></button
 	>
 	<div id="naver-map" class="map"></div>
 	<p class="signature en">made with ♡ by Sujin & Yungeun</p>
-	<a class="github-icon" href="https://github.com/anthopark/our-wedding-invitation" target="_blank"
+	<a class="github-icon" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank"
 		><Github size="1.1em" strokeWidth={1} /></a
 	>
 	<img class="location-deco" src={locationDeco} alt="" />

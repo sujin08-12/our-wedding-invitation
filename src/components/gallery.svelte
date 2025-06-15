@@ -1,21 +1,63 @@
 <script lang="ts">
-	import photo2 from '$lib/assets/gallery/2.webp';
-	import photo3 from '$lib/assets/gallery/3.webp';
-	import photo4 from '$lib/assets/gallery/4.webp';
-	import photo5 from '$lib/assets/gallery/5.webp';
-	import photo6 from '$lib/assets/gallery/6.webp';
-	import photo7 from '$lib/assets/gallery/7.webp';
-	import photo8 from '$lib/assets/gallery/8.webp';
-	import photo9 from '$lib/assets/gallery/9.webp';
-	import photo10 from '$lib/assets/gallery/10.webp';
-	import photo11 from '$lib/assets/gallery/11.webp';
-
 	import PhotoSwipeLightBox from 'photoswipe/lightbox';
 	import PhotoSwipe from 'photoswipe';
 	import 'photoswipe/style.css';
 	import { onMount } from 'svelte';
 	import { localeStore } from '../i18n.svelte';
 	import { _ } from 'svelte-i18n';
+
+	const photos = [
+		{
+			src: "/10.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/2.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/3.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/4.webp",
+			width: 2000,
+			height: 1333
+		},
+		{
+			src: "/5.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/6.webp",
+			width: 2000,
+			height: 1333
+		},
+		{
+			src: "/7.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/8.webp",
+			width: 1200,
+			height: 1800
+		},
+		{
+			src: "/9.webp",
+			width: 1200,
+			height: 1790
+		},
+		{
+			src: "/11.webp",
+			width: 1200,
+			height: 1790
+		}
+	];
 
 	onMount(() => {
 		const lightbox = new PhotoSwipeLightBox({
@@ -27,59 +69,6 @@
 
 		lightbox.init();
 	});
-
-	const photos = [
-		{
-			src: photo10,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo2,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo3,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo4,
-			width: 2000,
-			height: 1333
-		},
-		{
-			src: photo5,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo6,
-			width: 2000,
-			height: 1333
-		},
-		{
-			src: photo7,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo8,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo9,
-			width: 1200,
-			height: 1790
-		},
-		{
-			src: photo11,
-			width: 1200,
-			height: 1790
-		}
-	];
 </script>
 
 <section class="gallery">
