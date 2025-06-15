@@ -1,10 +1,7 @@
 <script lang="ts">
-	import PhotoSwipeLightBox from 'photoswipe/lightbox';
-	import PhotoSwipe from 'photoswipe';
-	import 'photoswipe/style.css';
-	import { onMount } from 'svelte';
 	import { localeStore } from '../i18n.svelte';
 	import { _ } from 'svelte-i18n';
+	import Carousel from 'svelte-light-carousel';
 
 	const photos = [
 		{
@@ -59,16 +56,7 @@
 		}
 	];
 
-	onMount(() => {
-		const lightbox = new PhotoSwipeLightBox({
-			gallery: '#gallery',
-			children: 'a',
-			showHideAnimationType: 'fade',
-			pswpModule: PhotoSwipe
-		});
-
-		lightbox.init();
-	});
+	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
 </script>
 
 <section class="gallery">
@@ -76,19 +64,33 @@
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
 		<p class="sub-title {localeStore.locale}">{$_('gallery.sub_title')}</p>
 	</div>
-	<div id="gallery">
-		{#each photos as photo}
-			<a
-				href={photo.src}
-				class="slide"
-				data-pswp-width={photo.width}
-				data-pswp-height={photo.height}
-				target="_blank"
-			>
-				<img class="thumbnail" src={photo.src} alt="" />
-			</a>
-		{/each}
-	</div>
+	<Carousel slides={photos} arrows={true}>
+		<div slot="prev" let:prev>
+			<button on:click={prev} class="carousel-arrow prev-arrow">&#10094;</button>
+		</div>
+		<div slot="next" let:next>
+			<button on:click={next} class="carousel-arrow next-arrow">&#10095;</button>
+		</div>
+		<div slot="slide" let:slide>
+			<img class="thumbnail" src={slide.src} alt="" />
+		</div>
+		<div slot="dots" let:dots let:scrollTo>
+			<div class="carousel-dots-container">
+				<button class="dot-arrow dot-prev-arrow" on:click={() => dotCarousel.scrollBy({ left: -70, behavior: 'smooth' })}>&lt;</button>
+				<div class="carousel-dots" bind:this={dotCarousel}>
+					{#each dots as dot, i}
+						<button
+							class="carousel-dot {dot.active ? 'active' : ''}"
+							on:click={() => scrollTo(i)}
+						>
+							<img src={photos[i].src} alt="thumbnail {i + 1}" class="dot-thumbnail" />
+						</button>
+					{/each}
+				</div>
+				<button class="dot-arrow dot-next-arrow" on:click={() => dotCarousel.scrollBy({ left: 70, behavior: 'smooth' })}>&gt;</button>
+			</div>
+		</div>
+	</Carousel>
 </section>
 
 <style lang="scss">
@@ -127,13 +129,6 @@
 		}
 	}
 
-	#gallery {
-		display: grid;
-		gap: 1em;
-		grid-template-columns: repeat(2, 1fr);
-		grid-auto-rows: 6.5em;
-	}
-
 	img.thumbnail {
 		border-radius: 4px;
 		width: 100%;
@@ -141,14 +136,115 @@
 		object-fit: cover;
 	}
 
-	.slide:nth-child(1),
-	.slide:nth-child(2),
-	.slide:nth-child(3),
-	.slide:nth-child(5),
-	.slide:nth-child(7),
-	.slide:nth-child(8),
-	.slide:nth-child(9),
-	.slide:nth-child(10) {
-		grid-row: span 2;
+	/* svelte-light-carousel basic styles */
+	:global(.carousel) {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+
+	:global(.carousel-slide) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	:global(.carousel-slide img) {
+		max-width: 100%;
+		height: auto;
+	}
+
+	:global(.carousel-arrow) {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: transparent;
+		color: white;
+		border: none;
+		padding: 10px;
+		cursor: pointer;
+		z-index: 10;
+		font-size: 1.5em;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	:global(.prev-arrow) {
+		left: 10px;
+	}
+
+	:global(.next-arrow) {
+		right: 10px;
+	}
+
+	:global(.carousel-dots) {
+		display: flex;
+		justify-content: flex-start; /* 스크롤 시 왼쪽에 정렬 */
+		margin-top: 1em;
+		overflow-x: auto;
+		padding: 0.5em 0;
+		scroll-behavior: smooth;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		max-width: 370px; /* (60px + 5px 마진 왼쪽 + 5px 마진 오른쪽) * 5개 = 350px, 여유분 추가 */
+		white-space: nowrap;
+	}
+
+	:global(.carousel-dots-container) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 100%;
+	}
+
+	:global(.dot-arrow) {
+		background-color: transparent; /* 투명 배경 */
+		color: black; /* 흰색 화살표 */
+		border: none;
+		padding: 10px;
+		cursor: pointer;
+		z-index: 10;
+		border-radius: 50%; /* 둥근 모양 */
+		margin: 0 5px;
+		flex-shrink: 0;
+		font-size: 1.5em; /* 메인 화살표와 동일한 크기 */
+		font-weight: normal; /* font-weight 제거 (기본값으로) */
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	:global(.carousel-dot) {
+		background: none;
+		border: 2px solid transparent;
+		padding: 0;
+		cursor: pointer;
+		margin: 0 5px;
+		width: 60px;
+		height: 60px;
+		border-radius: 4px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	:global(.carousel-dot.active) {
+		border-color: $primary-color;
+	}
+
+	:global(.dot-thumbnail) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
 	}
 </style>

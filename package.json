@@ -29,6 +29,7 @@
 		"@lucide/svelte": "^0.482.0",
 		"melt": "^0.28.2",
 		"photoswipe": "^5.4.4",
-		"svelte-i18n": "^4.0.1"
+		"svelte-i18n": "^4.0.1",
+		"svelte-light-carousel": "^1.0.5"
 	}
 }

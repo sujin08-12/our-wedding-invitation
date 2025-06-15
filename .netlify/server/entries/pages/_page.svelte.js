@@ -1,3 +1,4 @@
+import "clsx";
 import { J as attr, K as attr_class, F as escape_html, M as stringify, N as store_get, O as unsubscribe_stores, D as pop, A as push, P as ensure_array_like, Q as attr_style, R as spread_attributes, S as clsx, T as element, U as spread_props } from "../../chunks/index.js";
 import { l as localeStore, $ as $format } from "../../chunks/i18n.svelte.js";
 import "photoswipe/lightbox";
@@ -9,8 +10,10 @@ function html(value) {
 }
 function Calendar($$payload) {
   const calendarDeco = "/calendar.png";
-  $$payload.out += `<section class="calendar svelte-p5ko0o"><img class="calendar-deco svelte-p5ko0o"${attr("src", calendarDeco)} alt="calendar deco"></section>`;
+  $$payload.out += `<section class="calendar svelte-p5ko0o"><img class="calendar-deco svelte-p5ko0o"${attr("src", calendarDeco)} alt="calendar deco"/></section>`;
 }
+const letterBottom = "/_app/immutable/assets/letter-bottom.Bn3YmCV8.webp";
+const letterDeco = "/_app/immutable/assets/letter-deco.sOi_jrUG.svg";
 function Letter($$payload, $$props) {
   push();
   var $$store_subs;
@@ -20,7 +23,7 @@ function Letter($$payload, $$props) {
     <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="1.5" cy="1.5" r="1.5" fill="#B99493"/>
     </svg>`;
-  $$payload.out += `<section class="letter svelte-15smenq"><div class="header svelte-15smenq"><img class="header-deco svelte-15smenq"${attr("src", letterDeco)} alt="letter header deco"> <h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.date"))}</h2> <p${attr_class(`sub-title ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.sub_title"))}</p></div> <div class="letter-container"><p${attr_class(`letter ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.letter_content"))}</p> `;
+  $$payload.out += `<section class="letter svelte-15smenq"><div class="header svelte-15smenq"><img class="header-deco svelte-15smenq"${attr("src", letterDeco)} alt="letter header deco"/> <h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.date"))}</h2> <p${attr_class(`sub-title ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.sub_title"))}</p></div> <div class="letter-container"><p${attr_class(`letter ${stringify(localeStore.locale)}`, "svelte-15smenq")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("letter.letter_content"))}</p> `;
   if (localeStore.isEn) {
     $$payload.out += "<!--[-->";
     $$payload.out += `<div class="letter-signature svelte-15smenq"><p class="en svelte-15smenq">with love</p> <p class="en svelte-15smenq">Yungeun &amp; Sujin</p></div>`;
@@ -28,7 +31,7 @@ function Letter($$payload, $$props) {
     $$payload.out += "<!--[!-->";
     $$payload.out += `<div class="family-description kr svelte-15smenq"><p class="svelte-15smenq">김성훈<span class="name-divider svelte-15smenq">${html(nameDivider)}</span> 윤경숙 <span class="son svelte-15smenq">의 아들</span>김윤근</p> <p class="svelte-15smenq">정재철<span class="name-divider svelte-15smenq">${html(nameDivider)}</span> 김선순<span class="daughter svelte-15smenq">의 딸</span>정수진</p></div>`;
   }
-  $$payload.out += `<!--]--></div></section> <img class="letter-bottom"${attr("src", letterBottom)} alt="letter bottom">`;
+  $$payload.out += `<!--]--></div></section> <img class="letter-bottom"${attr("src", letterBottom)} alt="letter bottom"/>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
 }
@@ -83,6 +86,7 @@ function Cover($$payload, $$props) {
   const maxSectionHeight = 900;
   let sectionHeight = maxSectionHeight;
   $$payload.out += `<section class="cover svelte-1jkgejr"${attr_style("", { height: `${sectionHeight}px` })}><div class="confetti-area svelte-1jkgejr">`;
+  $$payload.out += `<section class="cover svelte-1jkgejr"${attr_style("", { height: `${sectionHeight}px` })}><div class="confetti-area svelte-1jkgejr">`;
   Confetti($$payload, {
     x: [-5, 5],
     y: [0, 0.1],
@@ -93,6 +97,7 @@ function Cover($$payload, $$props) {
     amount: 70,
     fallDistance: `${sectionHeight}px`
   });
+  $$payload.out += `<!----></div> <div class="names-kr-box svelte-1jkgejr"><span class="names kr svelte-1jkgejr">김윤근</span> <span class="names kr svelte-1jkgejr">그리고</span> <span class="names kr svelte-1jkgejr">정수진</span></div> <div class="cover-title-container svelte-1jkgejr"><div class="names-en-box svelte-1jkgejr"><span class="names en-sacramento svelte-1jkgejr">Sujin &amp; Yungeun</span></div> <div class="event-date-and-place-box svelte-1jkgejr"><span${attr_class(`event-date-and-time ${stringify(localeStore.locale)}`, "svelte-1jkgejr")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("cover.date"))}</span> <span${attr_class(`event-place ${stringify(localeStore.locale)}`, "svelte-1jkgejr")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("cover.place"))}</span></div></div></section>`;
   $$payload.out += `<!----></div> <div class="names-kr-box svelte-1jkgejr"><span class="names kr svelte-1jkgejr">김윤근</span> <span class="names kr svelte-1jkgejr">그리고</span> <span class="names kr svelte-1jkgejr">정수진</span></div> <div class="cover-title-container svelte-1jkgejr"><div class="names-en-box svelte-1jkgejr"><span class="names en-sacramento svelte-1jkgejr">Sujin &amp; Yungeun</span></div> <div class="event-date-and-place-box svelte-1jkgejr"><span${attr_class(`event-date-and-time ${stringify(localeStore.locale)}`, "svelte-1jkgejr")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("cover.date"))}</span> <span${attr_class(`event-place ${stringify(localeStore.locale)}`, "svelte-1jkgejr")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("cover.place"))}</span></div></div></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
@@ -240,11 +245,11 @@ function Location($$payload, $$props) {
   var $$store_subs;
   const locationTopWave = "/location-top-wave.svg";
   const locationDeco = "/location-deco.svg";
-  $$payload.out += `<img${attr("src", locationTopWave)} class="location-top-wave svelte-1agmywo" alt=""> <section class="location svelte-1agmywo"><h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-1agmywo")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("location.title"))}</h2> <p class="venue en svelte-1agmywo">브라이드 밸리</p> <button class="copy-address en svelte-1agmywo"><span class="clipboard-icon svelte-1agmywo">`;
+  $$payload.out += `<img${attr("src", locationTopWave)} class="location-top-wave svelte-1agmywo" alt=""/> <section class="location svelte-1agmywo"><h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-1agmywo")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("location.title"))}</h2> <p class="venue en svelte-1agmywo">브라이드 밸리</p> <button class="copy-address en svelte-1agmywo"><span class="clipboard-icon svelte-1agmywo">`;
   Clipboard($$payload, { size: "1.1em" });
-  $$payload.out += `<!----></span> <span class="address svelte-1agmywo">서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀</span></button> <div id="naver-map" class="map svelte-1agmywo"></div> <p class="signature en svelte-1agmywo">made with ♡ by Sujin &amp; Yungeun</p> <a class="github-icon svelte-1agmywo" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank">`;
+  $$payload.out += `<!----></span> <span class="address svelte-1agmywo">108 Lamplighter, Irvine, CA 92620</span></button> <div id="naver-map" class="map svelte-1agmywo"></div> <p class="signature en svelte-1agmywo">made with ♡ by Sujin &amp; Yungeun</p> <a class="github-icon svelte-1agmywo" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank">`;
   Github($$payload, { size: "1.1em", strokeWidth: 1 });
-  $$payload.out += `<!----></a> <img class="location-deco svelte-1agmywo"${attr("src", locationDeco)} alt=""></section>`;
+  $$payload.out += `<!----></a> <img class="location-deco svelte-1agmywo"${attr("src", locationDeco)} alt=""/></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);
   pop();
 }
@@ -267,7 +272,7 @@ function Gallery($$payload, $$props) {
   $$payload.out += `<section class="gallery svelte-wnxxjj"><div class="header svelte-wnxxjj"><h2${attr_class(`title ${stringify(localeStore.locale)}`, "svelte-wnxxjj")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("gallery.title"))}</h2> <p${attr_class(`sub-title ${stringify(localeStore.locale)}`, "svelte-wnxxjj")}>${escape_html(store_get($$store_subs ??= {}, "$_", $format)("gallery.sub_title"))}</p></div> <div id="gallery" class="svelte-wnxxjj"><!--[-->`;
   for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
     let photo = each_array[$$index];
-    $$payload.out += `<a${attr("href", photo.src)} class="slide svelte-wnxxjj"${attr("data-pswp-width", photo.width)}${attr("data-pswp-height", photo.height)} target="_blank"><img class="thumbnail svelte-wnxxjj"${attr("src", photo.src)} alt=""></a>`;
+    $$payload.out += `<a${attr("href", photo.src)} class="slide svelte-wnxxjj"${attr("data-pswp-width", photo.width)}${attr("data-pswp-height", photo.height)} target="_blank"><img class="thumbnail svelte-wnxxjj"${attr("src", photo.src)} alt=""/></a>`;
   }
   $$payload.out += `<!--]--></div></section>`;
   if ($$store_subs) unsubscribe_stores($$store_subs);

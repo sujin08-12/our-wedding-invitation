@@ -19,7 +19,18 @@
 	font-style: normal;
 	color: $font-color-default;
 }
-
+@font-face {
+	font-family: 'Paperlogy-Regular';
+	src: url('/Paperlogy/Paperlogy-4Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Paperlogy-Bold';
+	src: url('/Paperlogy/Paperlogy-7Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 :root {
 	font-size: 0.9375em; // 15px when default is 16px
 

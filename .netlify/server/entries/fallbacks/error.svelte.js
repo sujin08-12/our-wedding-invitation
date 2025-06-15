@@ -1,4 +1,5 @@
 import { G as noop, I as getContext, F as escape_html, D as pop, A as push } from "../../chunks/index.js";
+import "clsx";
 import "../../chunks/exports.js";
 import { w as writable } from "../../chunks/index2.js";
 const SNAPSHOT_KEY = "sveltekit:snapshot";

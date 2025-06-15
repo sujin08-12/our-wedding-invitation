@@ -42,10 +42,10 @@
       "_index.js"
     ]
   },
-  "node_modules/.pnpm/@sveltejs+kit@2.20.3_@sveltejs+vite-plugin-svelte@4.0.4_svelte@5.25.6_vite@5.4.17_@type_a089f28b01306a4ab6770559d5ae4728/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
-    "src": "node_modules/.pnpm/@sveltejs+kit@2.20.3_@sveltejs+vite-plugin-svelte@4.0.4_svelte@5.25.6_vite@5.4.17_@type_a089f28b01306a4ab6770559d5ae4728/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
     "isEntry": true,
     "imports": [
       "_index.js",
@@ -53,10 +53,10 @@
       "_index2.js"
     ]
   },
-  "node_modules/.pnpm/@sveltejs+kit@2.20.3_@sveltejs+vite-plugin-svelte@4.0.4_svelte@5.25.6_vite@5.4.17_@type_a089f28b01306a4ab6770559d5ae4728/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
     "name": "index",
-    "src": "node_modules/.pnpm/@sveltejs+kit@2.20.3_@sveltejs+vite-plugin-svelte@4.0.4_svelte@5.25.6_vite@5.4.17_@type_a089f28b01306a4ab6770559d5ae4728/node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
     "isEntry": true,
     "imports": [
       "_index.js",

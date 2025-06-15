@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+	declare var naver: any; // Naver Maps API의 전역 naver 객체 선언
+</script>
+
 <script lang="ts">
 	const locationTopWave = "/location-top-wave.svg";
 	const locationDeco = "/location-deco.svg";
@@ -53,6 +57,19 @@
 		<span class="address">서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀</span></button
 	>
 	<div id="naver-map" class="map"></div>
+
+	<div class="transportation-info">
+		<h3 class="info-title {localeStore.locale}">{$_('location.parking_title')}</h3>
+		<p class="info-text {localeStore.locale}">{$_('location.parking_desc')}</p>
+
+		<h3 class="info-title {localeStore.locale}">{$_('location.public_transport_title')}</h3>
+		<p class="info-text {localeStore.locale}">{$_('location.public_transport_desc')}</p>
+	
+		<h3 class="info-title {localeStore.locale}">{$_('location.public_bus_title')}</h3>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_desc')}</p>
+		<p class="info-text {localeStore.locale}">{$_('location.public_direct_bus_desc')}</p>
+</div>
+
 	<p class="signature en">made with ♡ by Sujin & Yungeun</p>
 	<a class="github-icon" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank"
 		><Github size="1.1em" strokeWidth={1} /></a
@@ -121,7 +138,29 @@
 		margin-top: 2em;
 		width: 100%;
 		height: 16em;
-		margin-bottom: 7em;
+		margin-bottom: 2em;
+	}
+
+	.transportation-info {
+		width: 100%;
+		padding: 1em 0;
+		text-align: left;
+		margin-bottom: 2em;
+
+		.info-title {
+			font-size: 1em;
+			font-weight: bold;
+			color: $primary-color;
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+			color:rgb(29, 11, 11)
+		}
+
+		.info-text {
+			font-size: 0.7em;
+			line-height: 1.5;
+			color: $font-color-default;
+		}
 	}
 
 	p.signature {
