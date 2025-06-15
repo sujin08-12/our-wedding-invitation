@@ -18,7 +18,7 @@ const config = {
 			entries: ['*']
 		},
 		output: {
-			preloadStrategy: 'base'
+			preloadStrategy: 'modulepreload'
 		}
 	}
 };
