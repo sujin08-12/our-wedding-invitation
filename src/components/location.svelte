@@ -5,9 +5,7 @@
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
 	import { Clipboard, Github } from '@lucide/svelte';
-	import { PUBLIC_GOOGLE_MAPS_API_KEY } from '$env/static/public';
-
-	const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=${PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent('108 Lamplighter, Irvine, CA 92620')}`;
+	// import { PUBLIC_NAVER_MAP_CLIENT_ID } from '$env/static/public';
 
 	function copyAddress() {
 		navigator.clipboard
@@ -27,21 +25,35 @@
 		</span>
 		<span class="address">108 Lamplighter, Irvine, CA 92620</span></button
 	>
-	<div class="map">
-		<iframe
-			class="google-maps"
-			title="google maps"
-			allowfullscreen
-			referrerpolicy="no-referrer-when-downgrade"
-			src={googleMapsUrl}
-		></iframe>
-	</div>
+	<!-- <div id="naver-map" class="map"></div> -->
 	<p class="signature en">made with ♡ by Emily & Anthony</p>
 	<a class="github-icon" href="https://github.com/anthopark/our-wedding-invitation" target="_blank"
 		><Github size="1.1em" strokeWidth={1} /></a
 	>
 	<img class="location-deco" src={locationDeco} alt="" />
 </section>
+
+<!--
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId={PUBLIC_NAVER_MAP_CLIENT_ID}"></script>
+<script type="text/javascript">
+	const mapOptions = {
+		center: new naver.maps.LatLng(33.669445, -117.823059),
+		zoom: 17,
+		minZoom: 8,
+		zoomControl: true,
+		zoomControlOptions: {
+			position: naver.maps.Position.TOP_RIGHT
+		}
+	};
+
+	const map = new naver.maps.Map('naver-map', mapOptions);
+
+	const marker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(33.669445, -117.823059),
+		map: map
+	});
+</script>
+-->
 
 <style lang="scss">
 	img.location-top-wave {
@@ -105,14 +117,6 @@
 		width: 100%;
 		height: 16em;
 		margin-bottom: 7em;
-	}
-
-	iframe.google-maps {
-		width: 100%;
-		height: 100%;
-		border: none;
-		border-radius: 8px;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	}
 
 	p.signature {

@@ -1,9 +1,6 @@
 import type { Actions } from './$types';
-import { Resend } from 'resend';
 import { env } from '$env/dynamic/private';
 import { fail } from '@sveltejs/kit';
-
-const resend = new Resend(env.RESEND_API_KEY);
 
 export const actions = {
 	rsvp: async ({ request }) => {
@@ -17,17 +14,6 @@ export const actions = {
 
 		if (!rsvp) {
 			return fail(400, { missingRsvp: true });
-		}
-
-		const { data, error } = await resend.emails.send({
-			from: env.FROM_EMAIL,
-			to: env.TO_EMAIL,
-			subject: `[Wedding Invitation] RSVP - ${name}`,
-			text: `${rsvp}`
-		});
-
-		if (error) {
-			return fail(400, { name, emailError: true });
 		}
 
 		return { success: true };

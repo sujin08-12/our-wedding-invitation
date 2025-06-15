@@ -33,7 +33,6 @@
 		"@lucide/svelte": "^0.482.0",
 		"melt": "^0.28.2",
 		"photoswipe": "^5.4.4",
-		"resend": "^4.2.0",
 		"svelte-i18n": "^4.0.1"
 	}
 }
