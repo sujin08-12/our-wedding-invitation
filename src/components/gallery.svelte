@@ -62,7 +62,6 @@
 <section class="gallery">
 	<div class="header">
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
-		<p class="sub-title {localeStore.locale}">{$_('gallery.sub_title')}</p>
 	</div>
 	<Carousel slides={photos} arrows={true}>
 		<div slot="prev" let:prev>

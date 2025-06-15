@@ -49,7 +49,7 @@
 <img src={locationTopWave} class="location-top-wave" alt="" />
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
-	<p class="venue en">브라이드 밸리</p>
+	<p class="venue ko">브라이드 밸리</p>
 	<button class="copy-address en" onclick={copyAddress}>
 		<span class="clipboard-icon">
 			<Clipboard size="1.1em" />
@@ -57,6 +57,17 @@
 		<span class="address">서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀</span></button
 	>
 	<div id="naver-map" class="map"></div>
+
+	<div class="map-buttons-container">
+		<button class="map-button" onclick={() => window.open('https://naver.me/5f5s7gcK', '_blank')}>
+			<img src="/naver_Icon.png" alt="네이버 지도 아이콘" class="map-icon" />
+			<span>네이버 지도</span>
+		</button>
+		<button class="map-button" onclick={() => window.open('https://tmap.life/37a1cafb', '_blank')}>
+			<img src="/tmap_icon.jpeg" alt="티맵 지도 아이콘" class="map-icon" />
+			<span>티맵지도</span>
+		</button>
+	</div>
 
 	<div class="transportation-info">
 		<h3 class="info-title {localeStore.locale}">{$_('location.parking_title')}</h3>
@@ -68,7 +79,7 @@
 		<h3 class="info-title {localeStore.locale}">{$_('location.public_bus_title')}</h3>
 		<p class="info-text {localeStore.locale}">{$_('location.public_bus_desc')}</p>
 		<p class="info-text {localeStore.locale}">{$_('location.public_direct_bus_desc')}</p>
-</div>
+	</div>
 
 	<p class="signature en">made with ♡ by Sujin & Yungeun</p>
 	<a class="github-icon" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank"
@@ -110,7 +121,8 @@
 	}
 
 	p.venue {
-		&.en {
+		&.ko {
+			font-weight: 700;
 			font-size: 1.1rem;
 		}
 	}
@@ -129,7 +141,8 @@
 
 		.address {
 			display: inline-block;
-			font-size: 1.2rem;
+			font-size: 0.8em;
+			font-family: 'Noto Serif KR', serif;
 			text-decoration: underline;
 		}
 	}
@@ -138,7 +151,39 @@
 		margin-top: 2em;
 		width: 100%;
 		height: 16em;
-		margin-bottom: 2em;
+	}
+
+	.map-buttons-container {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		width: 100%;
+		margin: 2em 0;
+	}
+
+	.map-button {
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		display: flex;
+		flex-direction: row;
+		color: $font-color-default;
+		font-size: 0.9em;
+		text-align: center;
+		gap: 0.5em;
+		width: 40%;
+	}
+
+	.map-icon {
+		width: 30px;
+		height: auto;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		border-radius: 8px;
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
 	}
 
 	.transportation-info {
