@@ -6,20 +6,10 @@
 	import thursdayCol from '$lib/assets/calendar/calendar-thursday.svg';
 	import fridayCol from '$lib/assets/calendar/calendar-friday.svg';
 	import saturdayCol from '$lib/assets/calendar/calendar-saturday.svg';
-	import calendarDeco from '$lib/assets/calendar-deco.svg';
+	import calendarDeco from '$lib/assets/calendar.png';
 </script>
 
 <section class="calendar">
-	<h2 class="title en">June</h2>
-	<div class="calendar-content">
-		<img class="week-col" src={sundayCol} alt="sunday column" />
-		<img class="week-col" src={mondayCol} alt="monday column" />
-		<img class="week-col" src={tuesdayCol} alt="tuesday column" />
-		<img class="week-col" src={wednesdayCol} alt="wednesday column" />
-		<img class="week-col" src={thursdayCol} alt="thursday column" />
-		<img class="week-col" src={fridayCol} alt="friday column" />
-		<img class="week-col" src={saturdayCol} alt="saturday column" />
-	</div>
 	<img class="calendar-deco" src={calendarDeco} alt="calendar deco" />
 </section>
 
@@ -29,25 +19,9 @@
 		background-color: $white;
 		padding: 2em 3.5em 4em 3.5em;
 
-		.title {
-			@extend .title-font-en;
-			text-align: center;
-			margin-bottom: 1em;
-		}
-
-		.calendar-content {
+		.calendar-deco {
 			display: flex;
 			justify-content: space-between;
-
-			.week-col {
-				height: 100%;
-			}
-		}
-
-		img.calendar-deco {
-			position: absolute;
-			bottom: 0.5em;
-			right: 2.5em;
 		}
 	}
 </style>
