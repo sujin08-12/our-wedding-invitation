@@ -3,6 +3,13 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
+	server: {
+		host: '0.0.0.0',
+		port: 80,
+		allowedHosts: [
+			'sujin-yungeun.mooo.com'
+		]
+	},
 	css: {
 		preprocessorOptions: {
 			scss: {
