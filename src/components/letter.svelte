@@ -111,6 +111,7 @@
 	}
 	img.letter-bottom{
 		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.family-description {
