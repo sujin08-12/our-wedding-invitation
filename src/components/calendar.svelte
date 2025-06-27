@@ -31,13 +31,13 @@
 <section class="calendar">
 	<img class="calendar-deco" src={calendarDeco} alt="calendar deco" />
 	<div class="d-day-display">
-		윤근 ♥︎ 수진의 결혼식이
+		윤근 <span class="highlight">♥︎</span> 수진의 결혼식이
 		{#if dDay > 0}
-			<p>D-{dDay}일 남았습니다</p>
+			<p><span class="highlight">D-{dDay}일</span> 남았습니다</p>
 		{:else if dDay === 0}
-			<p>오늘입니다</p>
+			<p><span class="highlight">오늘</span>입니다</p>
 		{:else}
-			<p>결혼식이 지났습니다</p>
+			<p><span class="highlight">결혼식이 지났습니다</span></p>
 		{/if}
 	</div>
 </section>
@@ -58,12 +58,15 @@
 		}
 
 		.d-day-display {
-			font-family: 'Paperlogy-Regular'; /* 폰트 적용 */
+			font-family: 'Noto Serif KR', serif;
 			text-align: center;
 			margin-top: 1em; /* 필요에 따라 조정 */
-			font-size: 0.5em; /* 필요에 따라 조정 */
-			font-weight: bold;
+			font-size: 0.5em;
 			color: black;
+
+			.highlight {
+				color: $primary-color;
+			}
 		}
 	}
 </style>

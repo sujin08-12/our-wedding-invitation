@@ -92,7 +92,7 @@
 	p.letter {
 		text-align: center;
 		&.kr {
-			line-height: 2.3em;
+			line-height: 2em;
 			font-size: 0.9rem;
 		}
 		&.en {
@@ -132,6 +132,7 @@
 				justify-content: center;
 				font-size: 12px;
 				color: $primary-color;
+				min-width: 60px;
 			}
 		}
 	}

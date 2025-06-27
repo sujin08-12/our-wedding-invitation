@@ -12,9 +12,12 @@
 	import { PUBLIC_NAVER_MAP_CLIENT_ID } from '$env/static/public';
 	import { onMount } from 'svelte';
 
+	const address = '서울 강남구 강남대로 262\nB1층 브라이드밸리 웨딩홀';
+	$: addressHtml = address.replace(/\n/g, '<br>');
+
 	function copyAddress() {
 		navigator.clipboard
-			.writeText('서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀')
+			.writeText(address)
 			.then(() => alert($_('location.address_copied')))
 			.catch(() => null);
 	}
@@ -50,22 +53,22 @@
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
 	<p class="venue ko">브라이드 밸리</p>
-	<button class="copy-address en" onclick={copyAddress}>
+	<button class="copy-address en" on:click={copyAddress}>
 		<span class="clipboard-icon">
 			<Clipboard size="1.1em" />
 		</span>
-		<span class="address">서울 강남구 강남대로 262 B1층 브라이드밸리 웨딩홀</span></button
-	>
+		<span class="address">{@html addressHtml}</span>
+	</button>
 	<div id="naver-map" class="map"></div>
 
 	<div class="map-buttons-container">
-		<button class="map-button" onclick={() => window.open('https://naver.me/5f5s7gcK', '_blank')}>
+		<button class="map-button" on:click={() => window.open('https://naver.me/5f5s7gcK', '_blank')}>
 			<img src="/naver_Icon.png" alt="네이버 지도 아이콘" class="map-icon" />
 			<span>네이버 지도</span>
 		</button>
-		<button class="map-button" onclick={() => window.open('https://tmap.life/37a1cafb', '_blank')}>
+		<button class="map-button" on:click={() => window.open('https://tmap.life/37a1cafb', '_blank')}>
 			<img src="/tmap_icon.jpeg" alt="티맵 지도 아이콘" class="map-icon" />
-			<span>티맵지도</span>
+			<span>티맵 지도</span>
 		</button>
 	</div>
 
@@ -124,7 +127,6 @@
 		&.ko {
 
 			font-family: 'Noto Serif KR', serif;
-			font-weight: 700;
 			font-size: 1.1rem;
 		}
 	}
@@ -157,7 +159,8 @@
 
 	.map-buttons-container {
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		align-items: center;
 		gap: 1em;
 		width: 100%;
 		margin: 2em 0;
@@ -173,7 +176,12 @@
 		font-size: 0.9em;
 		text-align: center;
 		gap: 0.5em;
-		width: 40%;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.map-button span {
+		font-size: 0.7em;
 	}
 
 	.map-icon {
