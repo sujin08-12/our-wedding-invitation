@@ -29,13 +29,10 @@
 		{:else}
 			<div class="family-description kr">
 				<p>
-					김성훈<span class="name-divider">{@html nameDivider}</span> 윤경숙
-					<span class="son">의 아들</span>김윤근
+					김성훈<span class="name-divider">{@html nameDivider}</span>윤경숙<span class="son">의 아들</span>김윤근
 				</p>
 				<p>
-					정재철<span class="name-divider">{@html nameDivider}</span> 김선순<span class="daughter"
-						>의 딸</span
-					>정수진
+					정재철<span class="name-divider">{@html nameDivider}</span>김선순<span class="daughter">의 딸</span>정수진
 				</p>
 			</div>
 		{/if}
@@ -92,8 +89,8 @@
 	p.letter {
 		text-align: center;
 		&.kr {
-			line-height: 2em;
-			font-size: 0.9rem;
+			line-height: 2.2em;
+			font-size: 1rem;
 		}
 		&.en {
 			line-height: 1.8em;
@@ -112,25 +109,30 @@
 
 	.family-description {
 		margin-top: 2em;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
 		p {
 			color: $font-color-default;
 			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			column-gap: 12px;
+			grid-template-columns: 1fr auto 1fr 1fr 1fr;
+			column-gap: 0.5em;
 			margin-bottom: 20px;
 			align-items: center;
+			justify-items: center;
 
 			.name-divider {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				margin: 0 0.3em;
 			}
 
 			.son,
 			.daughter {
 				display: flex;
 				justify-content: center;
-				font-size: 12px;
 				color: $primary-color;
 				min-width: 60px;
 			}

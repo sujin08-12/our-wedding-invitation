@@ -64,11 +64,11 @@
 	<div class="map-buttons-container">
 		<button class="map-button" on:click={() => window.open('https://naver.me/5f5s7gcK', '_blank')}>
 			<img src="/naver_Icon.png" alt="네이버 지도 아이콘" class="map-icon" />
-			<span>네이버 지도</span>
+			<span>네이버맵</span>
 		</button>
 		<button class="map-button" on:click={() => window.open('https://tmap.life/37a1cafb', '_blank')}>
 			<img src="/tmap_icon.jpeg" alt="티맵 지도 아이콘" class="map-icon" />
-			<span>티맵 지도</span>
+			<span>티맵</span>
 		</button>
 	</div>
 
@@ -152,7 +152,7 @@
 
 		.address {
 			display: inline-block;
-			font-size: 0.8em;
+			font-size: 1em;
 			font-family: 'Noto Serif KR', serif;
 			text-decoration: underline;
 		}
@@ -166,8 +166,7 @@
 
 	.map-buttons-container {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		justify-content: center;
 		gap: 1em;
 		width: 100%;
 		margin: 2em 0;
@@ -180,11 +179,11 @@
 		display: flex;
 		flex-direction: row;
 		color: $font-color-default;
-		font-size: 0.9em;
+		font-size: 1.4em;
 		text-align: center;
 		gap: 0.5em;
-		width: 100%;
-		justify-content: center;
+		width: auto;
+		align-items: center;
 	}
 
 	.map-button span {
@@ -207,7 +206,7 @@
 		width: 100%;
 		padding: 1em 0;
 		text-align: left;
-		margin-bottom: 2em;
+		margin-bottom: 7em;
 
 		.info-title {
 			font-size: 1em;
@@ -219,9 +218,27 @@
 		}
 
 		.info-text {
-			font-size: 0.7em;
+			font-size: 1.0em;
 			line-height: 1.5;
 			color: $font-color-default;
+		}
+
+		h4.info-text {
+			margin-top: 0.75em;
+			margin-bottom: 0.1em;
+			line-height: 1.0;
+		}
+		p.info-text + h4.info-text {
+			margin-top: 0.75em;
+		}
+		p.info-text {
+			&:nth-of-type(6),
+			&:nth-of-type(8),
+			&:nth-of-type(10),
+			&:nth-of-type(12) {
+				margin-bottom: 0.4em;
+				line-height: 1.5;
+			}
 		}
 	}
 

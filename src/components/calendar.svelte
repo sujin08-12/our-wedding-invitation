@@ -61,7 +61,7 @@
 			font-family: 'Noto Serif KR', serif;
 			text-align: center;
 			margin-top: 1em; /* 필요에 따라 조정 */
-			font-size: 0.5em;
+			font-size: 1em;
 			color: black;
 
 			.highlight {
