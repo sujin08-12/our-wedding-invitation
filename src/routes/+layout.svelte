@@ -31,7 +31,7 @@
 	/>
 	<meta property="og:title" content="Sujin & Yungeun's Wedding" />
 	<meta property="og:description" content="Please join us on our most special day!" />
-	<meta property="og:image" content="https://sujin-marries-yungeun.vercel.app/DSCF6624%204.webp" />
+	<meta property="og:image" content="https://sujin-marries-yungeun.vercel.app/6.webp" />
 	<meta property="og:url" content="https://sujin-marries-yungeun.vercel.app/" />
 	<meta property="og:type" content="website" />
 </svelte:head>
