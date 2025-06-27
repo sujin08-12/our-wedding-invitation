@@ -42,8 +42,9 @@
 		position: relative;
 		background-image: url('/DSCF6624 4.webp');
 		background-repeat: no-repeat;
-		background-position: center center;
+		background-position: center 7rem;
 		background-size: cover;
+		overflow: hidden;
 	}
 
 	.white-gradient-blur {
