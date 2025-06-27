@@ -42,41 +42,45 @@
         <!-- 이 버튼의 텍스트는 +page.svelte에서 설정됩니다. -->
         <slot name="buttonText">버튼 텍스트</slot>
     </button>
-
-    {#if showAccountModal}
-        <div class="modal-overlay" on:click={() => showAccountModal = false}>
-            <div class="modal-content" on:click|stopPropagation>
-                <div class="modal-header">
-                    <h3 class="modal-title {localeStore.locale}">{$_('account.modal_title')}</h3>
-                    <button class="modal-close-btn" on:click={() => showAccountModal = false}>
-                        <X size="1.5em" />
-                    </button>
-                </div>
-                <div class="account-list">
-                    {#each accountsToDisplay as account}
-                        <div class="account-item">
-                            <div class="account-row">
-                                <span class="account-value">{account.name}</span>
-                                <button class="copy-btn" on:click={() => copyAccount(account.number)}>
-                                    복사 <Clipboard size="1.1em" />
-                                </button>
-                            </div>
-                            <div class="account-row">
-                                <span class="account-value">{account.bank}</span>
-                                <button class="kakaopay-btn {localeStore.locale}" on:click={() => openKakaoPay(account.url)}>
-                                    <img src="/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
-                                </button>
-                            </div>
-                            <div class="account-row">
-                                <span class="account-value">{account.number}</span>
-                            </div>
+</section>
+{#if showAccountModal}
+    <div
+        class="modal-overlay"
+        tabindex="0"
+        on:click={() => showAccountModal = false}
+        on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (showAccountModal = false)}
+    >
+        <div class="modal-content" on:click|stopPropagation>
+            <div class="modal-header">
+                <h3 class="modal-title {localeStore.locale}">{$_('account.modal_title')}</h3>
+                <button class="modal-close-btn" on:click={() => showAccountModal = false}>
+                    <X size="1.5em" />
+                </button>
+            </div>
+            <div class="account-list">
+                {#each accountsToDisplay as account}
+                    <div class="account-item">
+                        <div class="account-row">
+                            <span class="account-value">{account.name}</span>
+                            <button class="copy-btn" on:click={() => copyAccount(account.number)}>
+                                복사 <Clipboard size="1.1em" />
+                            </button>
                         </div>
-                    {/each}
-                </div>
+                        <div class="account-row">
+                            <span class="account-value">{account.bank}</span>
+                            <button class="kakaopay-btn {localeStore.locale}" on:click={() => openKakaoPay(account.url)}>
+                                <img src="/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
+                            </button>
+                        </div>
+                        <div class="account-row">
+                            <span class="account-value">{account.number}</span>
+                        </div>
+                    </div>
+                {/each}
             </div>
         </div>
-    {/if}
-</section>
+    </div>
+{/if}
 
 <style lang="scss">
     /* .account-section 스타일은 +page.svelte에서 관리하므로 여기서는 제거합니다. */

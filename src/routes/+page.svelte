@@ -13,33 +13,31 @@
 <Calendar />
 <Gallery />
 
-<div class="account-trapezoid">
-  <button class="account-btn">신랑측 혼주 및 신랑 계좌번호</button>
-  <button class="account-btn">신부측 혼주 및 신부 계좌번호</button>
-</div>
+
+<section class="account-trapezoid">
+    <Account accountGroup={0}>
+        <span slot="buttonText">신랑측 혼주 및 신랑 계좌번호</span>
+    </Account>
+    <Account accountGroup={1}>
+        <span slot="buttonText">신부측 혼주 및 신부 계좌번호</span>
+    </Account>
+</section>
 
 <Location />
 
 <style>
+
   .account-trapezoid {
-    width: 100%;
-    max-width: 600px;
-    min-width: 0;
-    height: 180px;
+    width: 600px;
     background: #fff;
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      calc(100% - 1px) 100%,
-      1px 100%
-    );
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto 0 auto;
-    box-sizing: border-box;
     padding: 2em 0 0.5em 0;
+    text-align: center;
+    gap: 1em;
   }
   .account-btn {
     font-size: 1rem;
