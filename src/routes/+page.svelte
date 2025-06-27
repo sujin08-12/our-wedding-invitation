@@ -6,6 +6,10 @@
 	import type { PageProps } from './$types';
 	import Gallery from '../components/gallery.svelte';
 	import Account from '../components/account.svelte';
+  const nameDivider = `
+    <svg width="3" height="3" viewBox="0 0 3 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="#B99493"/>
+    </svg>`;
 </script>
 
 <Cover />
@@ -16,10 +20,7 @@
 
 <section class="account-trapezoid">
     <Account accountGroup={0}>
-        <span slot="buttonText">신랑측 혼주 및 신랑 계좌번호</span>
-    </Account>
-    <Account accountGroup={1}>
-        <span slot="buttonText">신부측 혼주 및 신부 계좌번호</span>
+        <span slot="buttonText">신랑 	<span class="name-divider">{@html nameDivider}</span> 신부 계좌번호</span>
     </Account>
 </section>
 

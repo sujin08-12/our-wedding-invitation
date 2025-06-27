@@ -121,11 +121,11 @@
 
 	img.thumbnail {
 		display: block;
+		width: auto;
+		height: 400px;
 		max-width: 100vw;
 		max-height: 60vh;
-		width: auto;
-		height: auto;
-		object-fit: contain;
+		object-fit: cover;
 		margin: 0 auto;
 		border-radius: 4px;
 	}
@@ -147,8 +147,12 @@
 	}
 
 	:global(.carousel-slide img) {
-		max-width: 100%;
-		margin: 50% 0%;
+		width: auto;
+		height: 400px;
+		max-width: 100vw;
+		max-height: 60vh;
+		object-fit: cover;
+		margin: 0 auto;
 	}
 
 	:global(.carousel-arrow) {
