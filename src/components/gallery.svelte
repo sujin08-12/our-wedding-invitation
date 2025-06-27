@@ -230,7 +230,6 @@
 		width: 60px;
 		height: 60px;
 		border-radius: 4px;
-		overflow: hidden;
 		flex-shrink: 0;
 	}
 
