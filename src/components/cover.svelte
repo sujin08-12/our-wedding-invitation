@@ -58,7 +58,7 @@
 		background-position: center center;
 		background-size: cover;
 	}
-
+ㅋㅋㅋㅋ
 	.white-gradient-blur {
 	position: absolute;
 	top: 0;

@@ -46,11 +46,12 @@
     {#if showAccountModal}
         <div class="modal-overlay" on:click={() => showAccountModal = false}>
             <div class="modal-content" on:click|stopPropagation>
-                <button class="modal-close-btn" on:click={() => showAccountModal = false}>
-                    <X size="1.5em" />
-                </button>
-                <h3 class="modal-title {localeStore.locale}">{$_('account.modal_title')}</h3>
-
+                <div class="modal-header">
+                    <h3 class="modal-title {localeStore.locale}">{$_('account.modal_title')}</h3>
+                    <button class="modal-close-btn" on:click={() => showAccountModal = false}>
+                        <X size="1.5em" />
+                    </button>
+                </div>
                 <div class="account-list">
                     {#each accountsToDisplay as account}
                         <div class="account-item">
@@ -62,13 +63,12 @@
                             </div>
                             <div class="account-row">
                                 <span class="account-value">{account.bank}</span>
-                                <button class="kakaopay-btn {localeStore.locale}" on:click={openKakaoPay(account.url)}>
+                                <button class="kakaopay-btn {localeStore.locale}" on:click={() => openKakaoPay(account.url)}>
                                     <img src="/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
                                 </button>
                             </div>
                             <div class="account-row">
                                 <span class="account-value">{account.number}</span>
-
                             </div>
                         </div>
                     {/each}
@@ -130,33 +130,45 @@
 
     .modal-content {
         background-color: white;
-        padding: 2em;
+        padding: 0 2em 0 2em;
         border-radius: 8px;
         width: 90%;
         max-width: 500px;
-        height: 50vh;
         overflow-y: auto;
         position: relative;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
     }
 
-    .modal-close-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        font-size: 1.2em;
-        cursor: pointer;
-        color: $font-color-default;
+    .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 2;
+        padding: 2em 0 0.5em 0;
     }
 
     .modal-title {
         color: $primary-color;
         text-align: center;
-        margin-bottom: 1.5em;
+        margin-bottom: 0;
         font-size: 1em;
         font-weight: bold;
+        flex: 1;
+    }
+
+    .modal-close-btn {
+        position: static;
+        margin-left: 1em;
+        background: none;
+        border: none;
+        font-size: 1.2em;
+        cursor: pointer;
+        color: $font-color-default;
     }
 
     .account-list {
