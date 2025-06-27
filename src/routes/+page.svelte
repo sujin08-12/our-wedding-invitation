@@ -1,9 +1,10 @@
 <script lang="ts">
 	import Calendar from '../components/calendar.svelte';
+	import Letter from '../components/letter.svelte';
 	import Cover from '../components/cover.svelte';
 	import Location from '../components/location.svelte';
+	import type { PageProps } from './$types';
 	import Gallery from '../components/gallery.svelte';
-	import Letter from '../components/letter.svelte';
 	import Account from '../components/account.svelte';
 </script>
 
@@ -21,7 +22,9 @@
 
 <style>
   .account-trapezoid {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
     height: 180px;
     background: #fff;
     clip-path: polygon(
@@ -47,9 +50,13 @@
     color: #3a2323;
     font-family: 'Noto Serif KR', serif;
     cursor: pointer;
-    width: 55%;
+    width: 80%;
+    max-width: 330px;
+    min-width: 120px;
     box-sizing: border-box;
     border-radius: 0.72em;
     box-shadow: none;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
