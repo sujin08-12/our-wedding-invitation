@@ -28,13 +28,11 @@
 <style>
 
   .account-trapezoid {
-    width: 600px;
     background: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0 auto;
     padding: 2em 0 0.5em 0;
     text-align: center;
     gap: 1em;
