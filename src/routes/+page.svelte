@@ -12,25 +12,44 @@
 <Calendar />
 <Gallery />
 
-<section class="account-section-group">
-    <Account accountGroup={0}>
-        <span slot="buttonText">신랑측 혼주 및 신랑 계좌번호</span>
-    </Account>
-    <Account accountGroup={1}>
-        <span slot="buttonText">신부측 혼주 및 신부 계좌번호</span>
-    </Account>
-</section>
+<div class="account-trapezoid">
+  <button class="account-btn">신랑측 혼주 및 신랑 계좌번호</button>
+  <button class="account-btn">신부측 혼주 및 신부 계좌번호</button>
+</div>
 
 <Location />
 
 <style>
-    .account-section-group {
-        display: flex;
-        flex-direction: column; /* 버튼을 세로로 나열 */
-        align-items: center;
-        gap: 1em; /* 버튼 사이 간격 */
-        padding: 4em 2em; /* Account 컴포넌트의 기존 패딩과 유사하게 조정 */
-        background-color: white;
-        text-align: center;
-    }
+  .account-trapezoid {
+    width: 600px;
+    height: 180px;
+    background: #fff;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      calc(100% - 1px) 100%,
+      1px 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+    box-sizing: border-box;
+    padding: 2em 0 0.5em 0;
+  }
+  .account-btn {
+    font-size: 1rem;
+    padding: 1em 1em;
+    margin: 0.5em 0;
+    background: #fff;
+    border: 3px solid #3a2323;
+    color: #3a2323;
+    font-family: 'Noto Serif KR', serif;
+    cursor: pointer;
+    width: 55%;
+    box-sizing: border-box;
+    border-radius: 0.72em;
+    box-shadow: none;
+  }
 </style>
