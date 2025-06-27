@@ -17,6 +17,8 @@
 </script>
 
 <section style:height={`${sectionHeight}px`} class="cover">
+	<div class="white-gradient-blur"></div>
+	<div class="blur-gradient"></div>
 	<div class="confetti-area">
 		<Confetti
 			x={[-5, 5]}
@@ -51,10 +53,41 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: url('/cover.webp');
+		background-image: url('/DSCF6624 4.JPG');
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
+	}
+
+	.white-gradient-blur {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 35%;
+	pointer-events: none;
+	/* 아래가 핵심: 위에서 아래로 흰색이 점점 투명해지는 그라데이션 */
+	background: linear-gradient(
+			to bottom,
+			rgba(255,255,255,1) 0%,
+			rgba(255,255,255,0.5) 60%,
+			rgba(255,255,255,0) 100%
+  		);
+	}
+
+	/* 블러 그라데이션 오버레이 */
+	.blur-gradient {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 35%;
+	pointer-events: none;
+	/* 블러 효과 */
+	backdrop-filter: blur(5px);
+	/* 블러가 점점 사라지도록 마스크 */
+	-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+	mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%,  rgba(0,0,0,0) 100%);
 	}
 	.confetti-area {
 		position: absolute;

@@ -29,7 +29,14 @@
 		"public_transport_title": "🚉지하철",
 		"public_transport_desc": "3호선 & 신분당선 양재역 3번출구 도보 2분",
 		"public_bus_title": "🚍버스",
-		"public_bus_desc": "간선 140, 400, 402, 407, 421, 440, 441, 462, 470",
-		"public_direct_bus_desc": "직행 1005-1, 1550, 1570, 3002, 3007, 9700"
+		"public_bus_station": "정류장명 : 뱅뱅사거리(중)",
+		"public_bus_trunk_title": "간선",
+		"public_bus_trunk_desc":"140, 341, 400, 402, 421, 440, 441, 452, 470, 541, 641, 741",
+		"public_bus_branch_title": "지선",
+		"public_bus_branch_desc":"10411",
+		"public_bus_direct_title": "직행",
+		"public_bus_direct_desc":"1005, 1101, 1151, 1550‑1, 1551, 1551B, 1552, 3030, 3401, 4403, 5006, 5100, 5401, 6001, 6002, 6002‑1, 6004, 6501, 6600, 8501, 8502, 9004, 9202",
+		"public_bus_etc_title": "기타",
+		"public_bus_etc_desc":"917, 9404, 9408, 9409, M4403, M4434, M4448, M5438, 6009"
 	}
 }

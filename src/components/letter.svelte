@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
 
-	const letterBottom = "/letter-bottom.webp";
+	const letterBottom = "/letter-bottom.JPG";
 	const letterDeco = "/letter-deco.svg";
 
 	const nameDivider = `

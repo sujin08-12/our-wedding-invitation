@@ -5,54 +5,41 @@
 
 	const photos = [
 		{
-			src: "/10.webp",
-			width: 1200,
-			height: 1800
+			src: "/1.JPG"
 		},
 		{
-			src: "/2.webp",
-			width: 1200,
-			height: 1800
+			src: "/2.JPG"
 		},
 		{
-			src: "/3.webp",
-			width: 1200,
-			height: 1800
+			src: "/3.JPG"
+
 		},
 		{
-			src: "/4.webp",
-			width: 2000,
-			height: 1333
+			src: "/4.JPG"
 		},
 		{
-			src: "/5.webp",
-			width: 1200,
-			height: 1800
+			src: "/5.JPG"
 		},
 		{
-			src: "/6.webp",
-			width: 2000,
-			height: 1333
+			src: "/6.JPG"
 		},
 		{
-			src: "/7.webp",
-			width: 1200,
-			height: 1800
+			src: "/7.JPG"
 		},
 		{
-			src: "/8.webp",
-			width: 1200,
-			height: 1800
+			src: "/8.JPG"
 		},
 		{
-			src: "/9.webp",
-			width: 1200,
-			height: 1790
+			src: "/9.JPG"
 		},
 		{
-			src: "/11.webp",
-			width: 1200,
-			height: 1790
+			src: "/10.JPG"
+		},
+		{
+			src: "/11.JPG"
+		},
+		{
+			src: "/12.JPG"
 		}
 	];
 
@@ -150,7 +137,9 @@
 
 	:global(.carousel-slide img) {
 		max-width: 100%;
-		height: auto;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
 	}
 
 	:global(.carousel-arrow) {
@@ -182,7 +171,7 @@
 
 	:global(.carousel-dots) {
 		display: flex;
-		justify-content: flex-start; /* 스크롤 시 왼쪽에 정렬 */
+		justify-content: center;
 		margin-top: 1em;
 		overflow-x: auto;
 		padding: 0.5em 0;
@@ -192,7 +181,7 @@
 		&::-webkit-scrollbar {
 			display: none;
 		}
-		max-width: 370px; /* (60px + 5px 마진 왼쪽 + 5px 마진 오른쪽) * 5개 = 350px, 여유분 추가 */
+		max-width: 370px;
 		white-space: nowrap;
 	}
 

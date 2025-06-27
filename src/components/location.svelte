@@ -80,8 +80,15 @@
 		<p class="info-text {localeStore.locale}">{$_('location.public_transport_desc')}</p>
 	
 		<h3 class="info-title {localeStore.locale}">{$_('location.public_bus_title')}</h3>
-		<p class="info-text {localeStore.locale}">{$_('location.public_bus_desc')}</p>
-		<p class="info-text {localeStore.locale}">{$_('location.public_direct_bus_desc')}</p>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_station')}</p>
+		<h4 class="info-text {localeStore.locale}">{$_('location.public_bus_trunk_title')}</h4>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_trunk_desc')}</p>
+		<h4 class="info-text {localeStore.locale}">{$_('location.public_bus_branch_title')}</h4>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_branch_desc')}</p>
+		<h4 class="info-text {localeStore.locale}">{$_('location.public_bus_direct_title')}</h4>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_direct_desc')}</p>
+		<h4 class="info-text {localeStore.locale}">{$_('location.public_bus_etc_title')}</h4>
+		<p class="info-text {localeStore.locale}">{$_('location.public_bus_etc_desc')}</p>
 	</div>
 
 	<p class="signature en">made with ♡ by Sujin & Yungeun</p>
