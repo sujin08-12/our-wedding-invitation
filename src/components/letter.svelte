@@ -109,6 +109,9 @@
 			font-size: 1.2rem;
 		}
 	}
+	img.letter-bottom{
+		max-width: 600px;
+	}
 
 	.family-description {
 		margin-top: 2em;
