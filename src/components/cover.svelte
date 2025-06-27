@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { localeStore } from '../i18n.svelte';
 	import { browser } from '$app/environment';
-	import { Confetti } from 'svelte-confetti';
 	import { _ } from 'svelte-i18n';
 
 	const maxSectionHeight = 900;
@@ -19,18 +18,6 @@
 <section style:height={`${sectionHeight}px`} class="cover">
 	<div class="white-gradient-blur"></div>
 	<div class="blur-gradient"></div>
-	<div class="confetti-area">
-		<Confetti
-			x={[-5, 5]}
-			y={[0, 0.1]}
-			colorArray={['#588adb', '#f5e298', '#fff', '#9aa3f5']}
-			delay={[500, 2000]}
-			infinite
-			duration={5000}
-			amount={70}
-			fallDistance={`${sectionHeight}px`}
-		/>
-	</div>
 
 	<div class="names-kr-box">
 		<span class="names kr">김윤근</span>
@@ -89,15 +76,7 @@
 	-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 	mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%,  rgba(0,0,0,0) 100%);
 	}
-	.confetti-area {
-		position: absolute;
-		top: -50px;
-		left: -50px;
-		height: 100vh;
-		width: 100%;
-		overflow: hidden;
-		pointer-events: none;
-	}
+
 	.names-kr-box {
 		position: absolute;
 		top: 3em;
