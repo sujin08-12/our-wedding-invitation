@@ -8,12 +8,12 @@
     let showAccountModal = false;
 
     const allAccounts = [
-        { name: '김성훈', bank: '신한은행', number: '110-123-456789' },
-        { name: '윤경숙', bank: '국민은행', number: '012-34-5678-901' },
-        { name: '김윤근', bank: '우리은행', number: '1002-345-678901' },
-        { name: '정재철', bank: '농협은행', number: '302-1234-5678-90' },
-        { name: '김선순', bank: '하나은행', number: '123-456789-012' },
-        { name: '정수진', bank: '신한은행', number: '110-234-477360' }
+        { name: '김성훈', bank: '토스뱅크', number: '1001-2476-6021' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '윤경숙', bank: '토스뱅크', number: '1001-2476-6021' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '김윤근', bank: '토스뱅크', number: '1001-2476-6021' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '정재철', bank: '농협은행', number: '302-1234-5678-90' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '김선순', bank: '하나은행', number: '123-456789-012' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '정수진', bank: '신한은행', number: '110-234-477360' ,url: "https://qr.kakaopay.com/Ej9L4tjDn" }
     ];
 
     $: accountsToDisplay = accountGroup === 0 ? allAccounts.slice(0, 3) : allAccounts.slice(3, 6);
@@ -24,10 +24,10 @@
             .catch(err => console.error('Failed to copy: ', err));
     }
 
-    function openKakaoPay() {
+    function openKakaoPay(url: string) {
         // alert($_('account.kakaopay_info')); // 알림 제거
         // 실제 카카오페이 송금 링크로 대체하세요.
-        window.open('https://qr.kakaopay.com/Ej9L4tjDn', '_blank'); 
+        window.open(url, '_blank'); 
     }
 
     function openTossPay() {
@@ -62,7 +62,7 @@
                             </div>
                             <div class="account-row">
                                 <span class="account-value">{account.bank}</span>
-                                <button class="kakaopay-btn {localeStore.locale}" on:click={openKakaoPay}>
+                                <button class="kakaopay-btn {localeStore.locale}" on:click={openKakaoPay(account.url)}>
                                     <img src="/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
                                 </button>
                             </div>

@@ -5,41 +5,41 @@
 
 	const photos = [
 		{
-			src: "/1.JPG"
+			src: "/1.webp"
 		},
 		{
-			src: "/2.JPG"
+			src: "/2.webp"
 		},
 		{
-			src: "/3.JPG"
+			src: "/3.webp"
 
 		},
 		{
-			src: "/4.JPG"
+			src: "/4.webp"
 		},
 		{
-			src: "/5.JPG"
+			src: "/5.webp"
 		},
 		{
-			src: "/6.JPG"
+			src: "/6.webp"
 		},
 		{
-			src: "/7.JPG"
+			src: "/7.webp"
 		},
 		{
-			src: "/8.JPG"
+			src: "/8.webp"
 		},
 		{
-			src: "/9.JPG"
+			src: "/9.webp"
 		},
 		{
-			src: "/10.JPG"
+			src: "/10.webp"
 		},
 		{
-			src: "/11.JPG"
+			src: "/11.webp"
 		},
 		{
-			src: "/12.JPG"
+			src: "/12.webp"
 		}
 	];
 
@@ -50,17 +50,21 @@
 	<div class="header">
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
 	</div>
-	<Carousel slides={photos} arrows={true}>
-		<div slot="prev" let:prev>
-			<button on:click={prev} class="carousel-arrow prev-arrow">&#10094;</button>
-		</div>
-		<div slot="next" let:next>
-			<button on:click={next} class="carousel-arrow next-arrow">&#10095;</button>
-		</div>
+	<Carousel slides={photos} arrows={false}>
 		<div slot="slide" let:slide>
 			<img class="thumbnail" src={slide.src} alt="" />
 		</div>
 		<div slot="dots" let:dots let:scrollTo>
+			<!-- 동그라미 인디케이터 -->
+			<div class="custom-dots">
+				{#each dots as dot, i}
+					<span
+						class="dot {dot.active ? 'active' : ''}"
+						on:click={() => scrollTo(i)}
+					></span>
+				{/each}
+			</div>
+			<!-- 기존 썸네일 프리뷰 -->
 			<div class="carousel-dots-container">
 				<button class="dot-arrow dot-prev-arrow" on:click={() => dotCarousel.scrollBy({ left: -70, behavior: 'smooth' })}>&lt;</button>
 				<div class="carousel-dots" bind:this={dotCarousel}>
@@ -69,7 +73,7 @@
 							class="carousel-dot {dot.active ? 'active' : ''}"
 							on:click={() => scrollTo(i)}
 						>
-							<img src={photos[i].src} alt="thumbnail {i + 1}" class="dot-thumbnail" />
+							<img src={photos[i].src} alt={`thumbnail ${i + 1}`} class="dot-thumbnail" />
 						</button>
 					{/each}
 				</div>
@@ -116,10 +120,14 @@
 	}
 
 	img.thumbnail {
+		display: block;
+		max-width: 100vw;
+		max-height: 60vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		margin: 0 auto;
 		border-radius: 4px;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
 	}
 
 	/* svelte-light-carousel basic styles */
@@ -130,16 +138,17 @@
 	}
 
 	:global(.carousel-slide) {
-		display: flex;
+		display: inline-flex;
 		justify-content: center;
 		align-items: center;
+		width: auto;
+		height: auto;
+		position: relative;
 	}
 
 	:global(.carousel-slide img) {
 		max-width: 100%;
-		height: 100%;
-		justify-content: center;
-		align-items: center;
+		margin: 50% 0%;
 	}
 
 	:global(.carousel-arrow) {
@@ -234,5 +243,31 @@
 		height: 100%;
 		object-fit: cover;
 		display: block;
+	}
+
+	.custom-dots {
+		position: absolute;
+		bottom: 20%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.4em;
+		z-index: 2;
+	}
+
+	.dot {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #ddd;
+		display: inline-block;
+		transition: background 0.2s;
+		cursor: pointer;
+	}
+
+	.dot.active {
+		background: $primary-color;
 	}
 </style>

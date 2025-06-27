@@ -48,12 +48,13 @@
 	.calendar {
 		position: relative;
 		background-color: $white;
-		padding: 1em 3.5em 1em 3.5em;
+		padding: 1em 1.2em;
 		img{
 			width: 100%;
 		}
 		.calendar-deco {
 			display: flex;
+			width: 100%;
 			justify-content: space-between;
 		}
 
