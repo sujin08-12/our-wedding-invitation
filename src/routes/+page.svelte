@@ -20,7 +20,7 @@
 
 <section class="account-trapezoid">
     <Account accountGroup={0}>
-        <span slot="buttonText">신랑 	<span class="name-divider">{@html nameDivider}</span> 신부 계좌번호</span>
+        <span slot="buttonText">신랑 	<span class="name-divider">{@html nameDivider}</span> 신부 마음 전하기</span>
     </Account>
 </section>
 
