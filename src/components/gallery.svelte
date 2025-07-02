@@ -2,15 +2,14 @@
 	import { localeStore } from '../i18n.svelte';
 	import { _ } from 'svelte-i18n';
 	import Carousel from 'svelte-light-carousel';
-
-	const photos = Array.from({ length: 22 }, (_, i) => ({ src: `/${i + 1}.png` }));
-
+	import { onMount } from 'svelte';
+	const photos = Array.from({ length: 22 }, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
-	let loadedImages = new Set();
-	
-	function handleImageLoad(src: string) {
-		loadedImages.add(src);
-	}
+	onMount(() => {
+		if (dotCarousel) {
+			dotCarousel.scrollTo({ left: 0, behavior: 'auto' });
+		}
+	});
 </script>
 
 <section class="gallery">
@@ -18,27 +17,13 @@
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
 	</div>
 	<Carousel slides={photos} arrows={false}>
-
 		<div slot="slide" let:slide>
-			<div class="image-container">
-				{#if !loadedImages.has(slide.src)}
-					<div class="loading-placeholder">
-						<div class="loading-spinner"></div>
-					</div>
-				{/if}
-				<img 
-					class="thumbnail {loadedImages.has(slide.src) ? 'loaded' : ''}" 
-					src={slide.src} 
-					alt="" 
-					loading="lazy"
-					on:load={() => handleImageLoad(slide.src)}
-				/>
-			</div>
+			<img class="thumbnail" src={slide.src} alt="" />
 		</div>
 		<div slot="dots" let:dots let:scrollTo>
 			<!-- 동그라미 인디케이터 -->
 			<div class="custom-dots">
-				{#each dots as dot, i}
+				{#each dots as dot, i (i)}
 					<span
 						class="dot {dot.active ? 'active' : ''}"
 						on:click={() => scrollTo(i)}
@@ -49,17 +34,12 @@
 			<div class="carousel-dots-container">
 				<button class="dot-arrow dot-prev-arrow" on:click={() => dotCarousel.scrollBy({ left: -70, behavior: 'smooth' })}>&lt;</button>
 				<div class="carousel-dots" bind:this={dotCarousel}>
-					{#each dots as dot, i}
+					{#each dots as dot, i (i)}
 						<button
 							class="carousel-dot {dot.active ? 'active' : ''}"
 							on:click={() => scrollTo(i)}
 						>
-							<img 
-								src={photos[i].src} 
-								alt={`thumbnail ${i + 1}`} 
-								class="dot-thumbnail" 
-								loading="lazy"
-							/>
+							<img src={photos[i].src} alt={`thumbnail ${i + 1}`} class="dot-thumbnail" />
 						</button>
 					{/each}
 				</div>
@@ -105,57 +85,15 @@
 		}
 	}
 
-	.image-container {
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 400px;
-	}
-
-	.loading-placeholder {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #f5f5f5;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 1;
-	}
-
-	.loading-spinner {
-		width: 40px;
-		height: 40px;
-		border: 4px solid #e0e0e0;
-		border-top: 4px solid $primary-color;
-		border-radius: 50%;
-		animation: spin 1s linear infinite;
-	}
-
-	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
-	}
-
 	img.thumbnail {
 		display: block;
-		width: auto;
-		height: 400px;
 		max-width: 100vw;
 		max-height: 60vh;
-		object-fit: cover;
+		width: auto;
+		height: auto;
+		object-fit: contain;
 		margin: 0 auto;
 		border-radius: 4px;
-		opacity: 0;
-		transition: opacity 0.3s ease-in-out;
-		
-		&.loaded {
-			opacity: 1;
-		}
 	}
 
 	/* svelte-light-carousel basic styles */
@@ -175,12 +113,8 @@
 	}
 
 	:global(.carousel-slide img) {
-		width: auto;
-		height: 400px;
-		max-width: 100vw;
-		max-height: 60vh;
-		object-fit: cover;
-		margin: 0 auto;
+		max-width: 100%;
+		margin: 50% 0%;
 	}
 
 	:global(.carousel-arrow) {
