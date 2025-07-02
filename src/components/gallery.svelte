@@ -3,47 +3,14 @@
 	import { _ } from 'svelte-i18n';
 	import Carousel from 'svelte-light-carousel';
 
-	const photos = [
-		{
-			src: "/1.webp"
-		},
-		{
-			src: "/2.webp"
-		},
-		{
-			src: "/3.webp"
-
-		},
-		{
-			src: "/4.webp"
-		},
-		{
-			src: "/5.webp"
-		},
-		{
-			src: "/6.webp"
-		},
-		{
-			src: "/7.webp"
-		},
-		{
-			src: "/8.webp"
-		},
-		{
-			src: "/9.webp"
-		},
-		{
-			src: "/10.webp"
-		},
-		{
-			src: "/11.webp"
-		},
-		{
-			src: "/12.webp"
-		}
-	];
+	const photos = Array.from({ length: 22 }, (_, i) => ({ src: `/${i + 1}.webp` }));
 
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
+	let loadedImages = new Set();
+	
+	function handleImageLoad(src: string) {
+		loadedImages.add(src);
+	}
 </script>
 
 <section class="gallery">
@@ -52,7 +19,20 @@
 	</div>
 	<Carousel slides={photos} arrows={false}>
 		<div slot="slide" let:slide>
-			<img class="thumbnail" src={slide.src} alt="" />
+			<div class="image-container">
+				{#if !loadedImages.has(slide.src)}
+					<div class="loading-placeholder">
+						<div class="loading-spinner"></div>
+					</div>
+				{/if}
+				<img 
+					class="thumbnail {loadedImages.has(slide.src) ? 'loaded' : ''}" 
+					src={slide.src} 
+					alt="" 
+					loading="lazy"
+					on:load={() => handleImageLoad(slide.src)}
+				/>
+			</div>
 		</div>
 		<div slot="dots" let:dots let:scrollTo>
 			<!-- 동그라미 인디케이터 -->
@@ -73,7 +53,12 @@
 							class="carousel-dot {dot.active ? 'active' : ''}"
 							on:click={() => scrollTo(i)}
 						>
-							<img src={photos[i].src} alt={`thumbnail ${i + 1}`} class="dot-thumbnail" />
+							<img 
+								src={photos[i].src} 
+								alt={`thumbnail ${i + 1}`} 
+								class="dot-thumbnail" 
+								loading="lazy"
+							/>
 						</button>
 					{/each}
 				</div>
@@ -119,6 +104,42 @@
 		}
 	}
 
+	.image-container {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 400px;
+	}
+
+	.loading-placeholder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #f5f5f5;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 1;
+	}
+
+	.loading-spinner {
+		width: 40px;
+		height: 40px;
+		border: 4px solid #e0e0e0;
+		border-top: 4px solid $primary-color;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
 	img.thumbnail {
 		display: block;
 		width: auto;
@@ -128,6 +149,12 @@
 		object-fit: cover;
 		margin: 0 auto;
 		border-radius: 4px;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+		
+		&.loaded {
+			opacity: 1;
+		}
 	}
 
 	/* svelte-light-carousel basic styles */
