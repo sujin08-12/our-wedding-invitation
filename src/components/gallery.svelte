@@ -17,7 +17,8 @@
 	<div class="header">
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
 	</div>
-	<Carousel slides={photos} arrows={false}>
+	<Carousel slides={photos} arrows={false} key={`gallery-${photos.length}`}>
+
 		<div slot="slide" let:slide>
 			<div class="image-container">
 				{#if !loadedImages.has(slide.src)}
