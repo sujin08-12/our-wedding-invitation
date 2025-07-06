@@ -3,7 +3,7 @@
 	import { _ } from 'svelte-i18n';
 	import Carousel from 'svelte-light-carousel';
 	import { onMount } from 'svelte';
-	const photos = Array.from({ length: 23 }, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
+	const photos = Array.from({ length: 22}, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
 	let mounted = false;
 	onMount(() => {
