@@ -3,7 +3,7 @@
 	import { _ } from 'svelte-i18n';
 	import Carousel from 'svelte-light-carousel';
 	import { onMount } from 'svelte';
-	const photos = Array.from({ length: 22 }, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
+	const photos = Array.from({ length: 23 }, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
 	let mounted = false;
 	onMount(() => {
@@ -38,7 +38,11 @@
 			</div>
 			<!-- 기존 썸네일 프리뷰 -->
 			<div class="carousel-dots-container">
-				<button class="dot-arrow dot-prev-arrow" on:click={() => dotCarousel.scrollBy({ left: -70, behavior: 'smooth' })}>&lt;</button>
+				<button class="dot-arrow dot-prev-arrow" on:click={() => dotCarousel.scrollBy({ left: -70, behavior: 'smooth' })}>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" fill="currentColor"/>
+					</svg>
+				</button>
 				<div class="carousel-dots" bind:this={dotCarousel}>
 					{#each dots as dot, i (i)}
 						<button
@@ -49,7 +53,11 @@
 						</button>
 					{/each}
 				</div>
-				<button class="dot-arrow dot-next-arrow" on:click={() => dotCarousel.scrollBy({ left: 70, behavior: 'smooth' })}>&gt;</button>
+				<button class="dot-arrow dot-next-arrow" on:click={() => dotCarousel.scrollBy({ left: 70, behavior: 'smooth' })}>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z" fill="currentColor"/>
+					</svg>
+				</button>
 			</div>
 		</div>
 	</Carousel>
@@ -154,22 +162,41 @@
 	}
 
 	:global(.dot-arrow) {
-		background-color: transparent; /* 투명 배경 */
-		color: black; /* 흰색 화살표 */
+		background-color: rgba(255, 255, 255, 0.9);
+		color: #333;
 		border: none;
-		padding: 10px;
+		padding: 8px;
 		cursor: pointer;
 		z-index: 10;
-		border-radius: 50%; /* 둥근 모양 */
-		margin: 0 5px;
+		border-radius: 50%;
+		margin: 0 8px;
 		flex-shrink: 0;
-		font-size: 1.5em; /* 메인 화살표와 동일한 크기 */
-		font-weight: normal; /* font-weight 제거 (기본값으로) */
-		width: 30px;
-		height: 30px;
+		width: 36px;
+		height: 36px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		backdrop-filter: blur(10px);
+		
+		&:hover {
+			background-color: rgba(255, 255, 255, 1);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+			transform: scale(1.05);
+		}
+		
+		&:active {
+			transform: scale(0.95);
+		}
+		
+		svg {
+			transition: transform 0.2s ease;
+		}
+		
+		&:hover svg {
+			transform: scale(1.1);
+		}
 	}
 
 	:global(.carousel-dot) {
@@ -180,12 +207,37 @@
 		margin: 0 5px;
 		width: 60px;
 		height: 60px;
-		border-radius: 4px;
+		border-radius: 8px;
 		flex-shrink: 0;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		overflow: hidden;
+		position: relative;
+		
+		&:hover {
+			transform: scale(1.05);
+			border-color: rgba(0, 0, 0, 0.1);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		}
+		
+		&:active {
+			transform: scale(0.98);
+		}
 	}
 
 	:global(.carousel-dot.active) {
 		border-color: $primary-color;
+		box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+		
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(45deg, transparent 30%, rgba($primary-color, 0.1) 50%, transparent 70%);
+			animation: shimmer 2s infinite;
+		}
 	}
 
 	:global(.dot-thumbnail) {
@@ -193,6 +245,21 @@
 		height: 100%;
 		object-fit: cover;
 		display: block;
+		border-radius: 6px;
+		transition: transform 0.3s ease;
+		
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	@keyframes shimmer {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(100%);
+		}
 	}
 
 	.custom-dots {
