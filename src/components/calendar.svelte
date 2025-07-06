@@ -29,7 +29,7 @@
 </script>
 
 <section class="calendar">
-	<img class="calendar-deco" src={calendarDeco} alt="calendar deco" />
+	<img class="calendar-deco" src={calendarDeco} alt="calendar deco" loading="lazy" />
 	<div class="d-day-display">
 		윤근 <span class="highlight">♥︎</span> 수진의 결혼식이
 		{#if dDay > 0}

@@ -5,20 +5,23 @@
 	import { onMount } from 'svelte';
 	const photos = Array.from({ length: 22 }, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
+	let mounted = false;
 	onMount(() => {
+		mounted = true;
 		if (dotCarousel) {
 			dotCarousel.scrollTo({ left: 0, behavior: 'auto' });
 		}
 	});
 </script>
 
+{#if mounted}
 <section class="gallery">
 	<div class="header">
 		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
 	</div>
 	<Carousel slides={photos} arrows={false}>
 		<div slot="slide" let:slide>
-			<img class="thumbnail" src={slide.src} alt="" />
+			<img class="thumbnail" src={slide.src} alt="" loading="lazy" />
 		</div>
 		<div slot="dots" let:dots let:scrollTo>
 			<!-- 동그라미 인디케이터 -->
@@ -42,7 +45,7 @@
 							class="carousel-dot {dot.active ? 'active' : ''}"
 							on:click={() => scrollTo(i)}
 						>
-							<img src={photos[i].src} alt={`thumbnail ${i + 1}`} class="dot-thumbnail" />
+							<img src={photos[i].src} alt={`thumbnail ${i + 1}`} class="dot-thumbnail" loading="lazy" />
 						</button>
 					{/each}
 				</div>
@@ -51,6 +54,7 @@
 		</div>
 	</Carousel>
 </section>
+{/if}
 
 <style lang="scss">
 	section.gallery {

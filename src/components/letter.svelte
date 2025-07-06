@@ -13,7 +13,7 @@
 
 <section class="letter">
 	<div class="header">
-		<img class="header-deco" src={letterDeco} alt="letter header deco" />
+		<img class="header-deco" src={letterDeco} alt="letter header deco" loading="lazy" />
 		<h2 class="title {localeStore.locale}">{$_('letter.date')}</h2>
 		<p class="sub-title {localeStore.locale}">{$_('letter.sub_title')}</p>
 	</div>
@@ -38,7 +38,7 @@
 	</div>
 </section>
 
-<img class="letter-bottom" src={letterBottom} alt="letter bottom" />
+<img class="letter-bottom" src={letterBottom} alt="letter bottom" loading="lazy" />
 
 <style lang="scss">
 	section.letter {

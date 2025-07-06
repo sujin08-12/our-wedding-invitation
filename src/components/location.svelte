@@ -49,7 +49,7 @@
 	});
 </script>
 
-<img src={locationTopWave} class="location-top-wave" alt="" />
+<img src={locationTopWave} class="location-top-wave" alt="" loading="lazy" />
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
 	<p class="venue ko">브라이드 밸리</p>
@@ -63,11 +63,11 @@
 
 	<div class="map-buttons-container">
 		<button class="map-button" on:click={() => window.open('https://naver.me/5f5s7gcK', '_blank')}>
-			<img src="/naver_Icon.png" alt="네이버 지도 아이콘" class="map-icon" />
+			<img src="/naver_Icon.png" alt="네이버 지도 아이콘" class="map-icon" loading="lazy" />
 			<span>네이버맵</span>
 		</button>
 		<button class="map-button" on:click={() => window.open('https://tmap.life/37a1cafb', '_blank')}>
-			<img src="/tmap_icon.jpeg" alt="티맵 지도 아이콘" class="map-icon" />
+			<img src="/tmap_icon.jpeg" alt="티맵 지도 아이콘" class="map-icon" loading="lazy" />
 			<span>티맵</span>
 		</button>
 	</div>
@@ -95,7 +95,7 @@
 	<a class="github-icon" href="https://github.com/alxdr3k/our-wedding-invitation" target="_blank"
 		><Github size="1.1em" strokeWidth={1} /></a
 	>
-	<img class="location-deco" src={locationDeco} alt="" />
+	<img class="location-deco" src={locationDeco} alt="" loading="lazy" />
 </section>
 
 <style lang="scss">
