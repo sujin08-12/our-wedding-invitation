@@ -87,22 +87,61 @@
 <style lang="scss">
     /* .account-section 스타일은 +page.svelte에서 관리하므로 여기서는 제거합니다. */
 
+    h2.title {
+        color: $primary-color;
+        margin-bottom: 1em;
+
+        &.kr {
+            @extend .title-font-kr;
+            letter-spacing: 1px;
+        }
+
+        &.en {
+            @extend .title-font-en;
+            letter-spacing: 1px;
+        }
+    }
+
     button.show-account-btn {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.95);
         font-family: 'Noto Serif KR', serif;
-        border:2px solid #3C1E1E;
+        border: 2px solid #3C1E1E;
         color: #3C1E1E;
-        padding: 0.8em 1.5em;
-        border-radius: 5px;
+        padding: 1em 2em;
+        border-radius: 50px;
         font-size: 1.1em;
         cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
 
         &:hover {
             background-color: #EFEAE4;
-            font-family: 'Noto Serif KR', serif;
             font-weight: 900;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            
+            &::before {
+                left: 100%;
+            }
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     }
 
@@ -155,11 +194,27 @@
     .modal-close-btn {
         position: static;
         margin-left: 1em;
-        background: none;
+        background: rgba(0, 0, 0, 0.05);
         border: none;
         font-size: 1.2em;
         cursor: pointer;
         color: $font-color-default;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
+        }
+        
+        &:active {
+            transform: scale(0.95);
+        }
     }
 
     .account-list {
@@ -197,32 +252,51 @@
                 padding-right: 1em; /* 버튼과의 간격 */
             }
 
-           
-
-            .copy-btn{
-                padding: 0.5em 0.8em;
-                border-radius: 4px;
+            .copy-btn {
+                background: rgba(60, 30, 30, 0.05);
+                border: 1px solid #3C1E1E;
+                color: #3C1E1E;
+                padding: 0.6em 1em;
+                border-radius: 8px;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 0.3em;
+                gap: 0.4em;
                 flex-shrink: 0;
                 font-size: 0.9em;
-                transition: background-color 0.3s ease, color 0.3s ease;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-                min-width: 60px; /* 원래 min-width로 복원 */
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                min-width: 70px;
                 text-align: center;
-            }
+                position: relative;
+                overflow: hidden;
 
-            .copy-btn {
-                background: none;
-                border: 0.5px solid #3C1E1E;
-                color: #3C1E1E;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                    transition: left 0.5s;
+                }
 
                 &:hover {
                     background-color: #3C1E1E;
                     color: white;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 12px rgba(60, 30, 30, 0.3);
+                    
+                    &::before {
+                        left: 100%;
+                    }
+                }
+
+                &:active {
+                    transform: translateY(0);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                 }
             }
 
