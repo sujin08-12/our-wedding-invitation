@@ -27,6 +27,9 @@
 					<span
 						class="dot {dot.active ? 'active' : ''}"
 						on:click={() => scrollTo(i)}
+						role="button"
+						tabindex="0"
+						on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollTo(i); }}
 					></span>
 				{/each}
 			</div>
@@ -61,28 +64,6 @@
 
 	h2.title {
 		text-align: center;
-		&.en {
-			@extend .title-font-en;
-			letter-spacing: 1px;
-		}
-
-		&.kr {
-			@extend .title-font-kr;
-			letter-spacing: 1px;
-		}
-	}
-
-	p.sub-title {
-		text-align: center;
-		&.kr {
-			margin-top: 0.9em;
-			font-size: 0.9rem;
-		}
-
-		&.en {
-			margin-top: 0.5em;
-			font-size: 1.2rem;
-		}
 	}
 
 	img.thumbnail {

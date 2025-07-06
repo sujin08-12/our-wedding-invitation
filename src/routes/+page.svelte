@@ -17,10 +17,12 @@
 <Calendar />
 <Gallery />
 
-
 <section class="account-trapezoid">
     <Account accountGroup={0}>
-        <span slot="buttonText">신랑 	<span class="name-divider">{@html nameDivider}</span> 신부 마음 전하기</span>
+        <span slot="buttonText">신랑 측 마음전하기</span>
+    </Account>
+    <Account accountGroup={1}>
+        <span slot="buttonText">신부 측 마음전하기</span>
     </Account>
 </section>
 
@@ -37,23 +39,5 @@
     padding: 2em 0 0.5em 0;
     text-align: center;
     gap: 1em;
-  }
-  .account-btn {
-    font-size: 1rem;
-    padding: 1em 1em;
-    margin: 0.5em 0;
-    background: #fff;
-    border: 3px solid #3a2323;
-    color: #3a2323;
-    font-family: 'Noto Serif KR', serif;
-    cursor: pointer;
-    width: 80%;
-    max-width: 330px;
-    min-width: 120px;
-    box-sizing: border-box;
-    border-radius: 0.72em;
-    box-shadow: none;
-    margin-left: auto;
-    margin-right: auto;
   }
 </style>

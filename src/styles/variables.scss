@@ -30,22 +30,3 @@ $mobile-lg: "(min-width: 411px)";
     @content;
   }
 }
-
-.input-focused {
-  outline: solid;
-  outline-width: 3px;
-  outline-color: $blue-1;
-}
-
-
-.title-font-kr {
-  color: $primary-color;
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-
-.title-font-en {
-  color: $primary-color;
-  font-size: 1.8rem;
-  font-weight: 700;
-}

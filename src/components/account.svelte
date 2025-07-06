@@ -8,11 +8,15 @@
     let showAccountModal = false;
 
     const allAccounts = [
+        { name: '김성용', bank: '토스뱅크', number: '1001-2476-6021' ,url: "" },
+        { name: '김성아', bank: '토스뱅크', number: '1001-2476-6021' ,url: "" },
         { name: '김윤근', bank: '토스뱅크', number: '1001-2476-6021' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
+        { name: '정재철', bank: '농협은행', number: '132-12-174641' ,url: "" },
+        { name: '김선순', bank: '신한은행', number: '110-107-947221' ,url: "" },
         { name: '정수진', bank: '신한은행', number: '110-234-477360' ,url: "https://qr.kakaopay.com/Ej9L4tjDn" }
     ];
 
-    $: accountsToDisplay = allAccounts
+    $: accountsToDisplay = accountGroup === 0 ? allAccounts.slice(0, 3) : allAccounts.slice(3, 6);
 
     function copyAccount(accountNumber: string) {
         navigator.clipboard.writeText(accountNumber)
@@ -64,9 +68,11 @@
                         </div>
                         <div class="account-row">
                             <span class="account-value">{account.bank}</span>
+                            {#if account.url}
                             <button class="kakaopay-btn {localeStore.locale}" on:click={() => openKakaoPay(account.url)}>
-                                <img src="../assets/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
+                                <img src="/payment_icon_yellow_small.png" alt="KakaoPay icon" class="kakaopay-image-icon" />
                             </button>
+                            {/if}
                         </div>
                         <div class="account-row">
                             <span class="account-value">{account.number}</span>
@@ -80,21 +86,6 @@
 
 <style lang="scss">
     /* .account-section 스타일은 +page.svelte에서 관리하므로 여기서는 제거합니다. */
-
-    h2.title {
-        color: $primary-color;
-        margin-bottom: 1em;
-
-        &.kr {
-            @extend .title-font-kr;
-            letter-spacing: 1px;
-        }
-
-        &.en {
-            @extend .title-font-en;
-            letter-spacing: 1px;
-        }
-    }
 
     button.show-account-btn {
         background-color: white;

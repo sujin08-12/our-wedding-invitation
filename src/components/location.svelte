@@ -118,21 +118,10 @@
 		color: $primary-color;
 		text-align: center;
 		margin-bottom: 1em;
-
-		&.kr {
-			@extend .title-font-kr;
-			letter-spacing: 1px;
-		}
-
-		&.en {
-			@extend .title-font-en;
-			letter-spacing: 1px;
-		}
 	}
 
 	p.venue {
 		&.ko {
-
 			font-family: 'Noto Serif KR', serif;
 			font-size: 1.1rem;
 		}

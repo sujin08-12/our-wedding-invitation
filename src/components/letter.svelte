@@ -62,12 +62,10 @@
 		letter-spacing: 1px;
 
 		&.kr {
-			@extend .title-font-kr;
 			margin-bottom: 0.4em;
 		}
 
 		&.en {
-			@extend .title-font-en;
 			margin-bottom: 0.2em;
 		}
 	}
