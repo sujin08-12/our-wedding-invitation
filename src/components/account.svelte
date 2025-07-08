@@ -20,7 +20,7 @@
 
     function copyAccount(accountNumber: string) {
         navigator.clipboard.writeText(accountNumber)
-            .then(() => alert($_('account.copied_message')))
+            .then(() => alert('계좌번호가 복사되었습니다.'))
             .catch(err => console.error('Failed to copy: ', err));
     }
 
