@@ -8,8 +8,8 @@
     let showAccountModal = false;
 
     const allAccounts = [
-        { name: '김성용', bank: '토스뱅크', number: '1001-2476-6021' ,url: "" },
-        { name: '김성아', bank: '토스뱅크', number: '1001-2476-6021' ,url: "" },
+        { name: '김성용', bank: '농축협', number: '351-0943-4862-13' ,url: "" },
+        { name: '김성아', bank: '우체국', number: '312256-02-036134' ,url: "" },
         { name: '김윤근', bank: '토스뱅크', number: '1001-2476-6021' ,url: "https://qr.kakaopay.com/Ej8WUdAAo" },
         { name: '정재철', bank: '농협은행', number: '132-12-174641' ,url: "" },
         { name: '김선순', bank: '신한은행', number: '110-107-947221' ,url: "" },
