@@ -11,11 +11,22 @@
 	});
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
 	let mounted = false;
+	
+	// 모든 이미지를 미리 로딩하는 함수
+	const preloadImages = () => {
+		photos.forEach(photo => {
+			const img = new Image();
+			img.src = photo.src;
+		});
+	};
+	
 	onMount(() => {
 		mounted = true;
 		if (dotCarousel) {
 			dotCarousel.scrollTo({ left: 0, behavior: 'auto' });
 		}
+		// 페이지가 렌더링된 후 모든 이미지를 미리 로딩
+		preloadImages();
 	});
 </script>
 
