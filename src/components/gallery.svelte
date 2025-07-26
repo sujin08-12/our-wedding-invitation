@@ -3,7 +3,12 @@
 	import { _ } from 'svelte-i18n';
 	import Carousel from 'svelte-light-carousel';
 	import { onMount } from 'svelte';
-	const photos = Array.from({ length: 22}, (_, i) => ({ src: `/${i + 1}.png`, key: i + 1 }));
+	const photos = Array.from({ length: 22}, (_, i) => {
+		// JPG 파일이 있는 경우 JPG 사용, 없으면 PNG 사용
+		const jpgExists = [2, 3, 4, 5, 16, 17, 20, 21].includes(i + 1);
+		const extension = jpgExists ? 'jpg' : 'png';
+		return { src: `/${i + 1}.${extension}`, key: i + 1 };
+	});
 	let dotCarousel: HTMLDivElement; // 썸네일 캐러셀 요소를 참조하기 위한 변수
 	let mounted = false;
 	onMount(() => {

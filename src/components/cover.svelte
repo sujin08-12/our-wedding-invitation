@@ -40,7 +40,7 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: url('/DSCF6624 4.webp');
+		background-image: url('/DSCF6624 4.jpg');
 		background-repeat: no-repeat;
 		background-position: center 7rem;
 		background-size: cover;
